@@ -1,0 +1,29 @@
+<div class="main-container"
+	layout="column"
+	layout-align="start center">
+	<div class="top-bar"
+		layout="row"
+		layout-align="space-around center">
+		<md-input-container class="md-block room-addr">
+			<label>输入直播间地址</label>
+			<input ng-model="roomAddr">
+		</md-input-container>
+		<md-button class="md-raised md-primary"
+			ng-click="getRoomInfo()">获取弹幕</md-button>
+	</div>
+	<div class="room-info" 
+		ng-if="isRoomInfoReady"
+		layout="row"
+		layout-align="space-around center">
+		<div>{{roomInfo.roomName}}</div>
+		<div>{{roomInfo.anchor}}</div>
+		<div>{{roomInfo.cate}}</div>
+	</div>
+	<div class="chat-room">
+		<div class="msg-item"
+			ng-repeat="item in messages track by $index"
+			ng-if="item.type!=='unknown'">
+			{{ item.str }}
+		</div>
+	</div>
+</div>
